@@ -27,7 +27,7 @@ print("model created")
 
 # run model
 run = model(queries)
-persist_and_normalize_run(run, 'bm25-baseline', default_output="./")
+persist_and_normalize_run(run, 'bm25-baseline')
 print("model executed against queries")
 
 # test model
