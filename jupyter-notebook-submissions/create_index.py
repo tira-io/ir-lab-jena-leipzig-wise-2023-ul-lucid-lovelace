@@ -1,10 +1,17 @@
 import pyterrier as pt
+import os
 
 def create_index(documents):
+    stopwords = './stopwordlists/stopwords_english_long.txt'
+    if not os.path.exists(stopwords):
+        raise ValueError('Could not find stopwords file at %s' % stopwords)
+
+    print('I will use a custom stopwords list at %s' % stopwords)
+
     indexer = pt.IterDictIndexer(
-        "./tmp/index", 
+        "/tmp/index", 
         overwrite=True, 
-        stopwords="./stopwordlists/stopwords_english_long.txt", 
+        stopwords=stopwords, 
         meta={'docno': 100, 'text': 20480},
         stemmer='porter'
     )

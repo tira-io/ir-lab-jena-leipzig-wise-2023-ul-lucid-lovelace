@@ -1,8 +1,10 @@
-FROM webis/tira-ir-starter-pyterrier:0.0.4-base
+FROM webis/tira-ir-starter-pyterrier:0.0.5-base
 
 RUN rm -Rf /workspace/*.ipynb
 
-ADD *.ipynb /workspace
+ADD *.ipynb /workspace/
+ADD *.py /workspace/
+ADD stopwordlists /workspace/stopwordlists
 
 ADD example-ir-dataset /tmp-delete-ir-dataset
 
@@ -18,5 +20,7 @@ RUN export TIRA_INPUT_DATASET=/tmp-delete-ir-dataset \
 	&& rm -R /root/.ir_datasets \
 	&& jupyter trust /workspace/*.ipynb
 
-ENTRYPOINT [ "/workspace/run-pyterrier-notebook.py", "--input", "$inputDataset", "--output", "$outputDir", "--notebook", "/workspace/notebook.ipynb" ]
+WORKDIR /tmp
+
+ENTRYPOINT [ "/workspace/run-notebook.py", "--input", "$inputDataset", "--output", "$outputDir", "--notebook", "/workspace/notebook.ipynb", "--chdir", "/workspace" ]
 

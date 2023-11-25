@@ -28,7 +28,7 @@ The following happens under the hood:
 The [Dockerfile](Dockerfile) specifies how the Docker image should be build. You can build it via:
 
 ```
-docker build -t registry.webis.de/code-research/tira/tira-user-ul-lucid-lovelace/submission:0.0.1 .
+docker build --build-arg JUPYTER_NOTEBOOK=entry.ipynb -t registry.webis.de/code-research/tira/tira-user-ul-lucid-lovelace/submission:0.0.1 .
 ```
 
 ### Step 2: Test the Docker Image
