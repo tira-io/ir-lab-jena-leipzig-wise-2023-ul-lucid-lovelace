@@ -2,7 +2,7 @@ import pyterrier as pt
 import os
 
 def create_index(documents):
-    stopwords = './stopwordlists/stopwords_english_long.txt'
+    stopwords = './stopwordlists/custom_stopwords.txt'
     if not os.path.exists(stopwords):
         raise ValueError('Could not find stopwords file at %s' % stopwords)
 
