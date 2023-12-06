@@ -1,7 +1,7 @@
 import os
 import pyterrier as pt
 
-def generate_custom_stopwords():
+def generate_custom_stopwords(documents):
     # create a standart index
     indexer = pt.IterDictIndexer(
         "/tmp/index_for_stopwords", 
@@ -25,6 +25,9 @@ def generate_custom_stopwords():
     sorted_terms = sorted(term_frequencies, key=lambda x: x[1], reverse=True)
 
     file_path = './stopwordlists/custom_stopwords.txt'
+
+    with open(file_path, 'w') as file:
+        file.write("")
 
     # Open the file in 'a' (append) mode
     with open(file_path, 'a') as file:
