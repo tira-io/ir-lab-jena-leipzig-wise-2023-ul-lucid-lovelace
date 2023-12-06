@@ -1,4 +1,5 @@
 import os
+import pyterrier as pt
 
 def generate_custom_stopwords():
     # create a standart index
