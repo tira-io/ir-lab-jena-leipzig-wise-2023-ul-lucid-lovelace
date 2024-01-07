@@ -13,7 +13,7 @@ def create_index(documents):
         overwrite=True, 
         stopwords=stopwords, 
         meta={'docno': 100, 'text': 20480},
-        stemmer='porter'
+        stemmer=None
     )
     index_ref = indexer.index(({'docno': i.doc_id, 'text': i.text} for i in documents))
     return pt.IndexFactory.of(index_ref)
